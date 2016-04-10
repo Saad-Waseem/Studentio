@@ -1,0 +1,8 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+blog_show:
+    path:      /blog/{slug}
+    defaults:  { _controller: AppBundle:Blog:show }
+logout:
+    path: /logout
