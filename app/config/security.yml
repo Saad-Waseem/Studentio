@@ -14,7 +14,7 @@ security:
         login_provider:
             entity:
                 class: AppBundle:User
-                property: username
+                property: email
                 # if you're using multiple entity managers
                 # manager_name: customer
 
@@ -31,6 +31,7 @@ security:
             form_login:
                 login_path: /login
                 check_path: /login
+                username_parameter: _email
             #     provider: fos_userbundle
             #     csrf_token_generator: security.csrf.token_manager
                 # if you are using Symfony < 2.8, use the following config instead:

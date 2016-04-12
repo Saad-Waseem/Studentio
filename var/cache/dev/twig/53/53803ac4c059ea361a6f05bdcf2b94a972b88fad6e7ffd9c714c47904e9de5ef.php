@@ -22,8 +22,8 @@ class __TwigTemplate_3c47d412e840cafb91d0e0c8463b59ee39c5ca13fdaa2e01d38211bd4f1
 
 <form action=\"<?php echo \$view['router']->path('login') ?>\" method=\"post\">
 \t<?php //echo \$view['router']->path('login') ?>
-    <label for=\"username\">Username:</label>
-    <input type=\"text\" id=\"username\" name=\"_username\" value=\"<?php echo \$last_username ?>\" />
+    <label for=\"username\">Email:</label>
+    <input type=\"text\" id=\"email\" name=\"_email\" value=\"<?php echo \$last_username ?>\" />
 
     <label for=\"password\">Password:</label>
     <input type=\"password\" id=\"password\" name=\"_password\" />
@@ -54,8 +54,8 @@ class __TwigTemplate_3c47d412e840cafb91d0e0c8463b59ee39c5ca13fdaa2e01d38211bd4f1
 /* */
 /* <form action="<?php echo $view['router']->path('login') ?>" method="post">*/
 /* 	<?php //echo $view['router']->path('login') ?>*/
-/*     <label for="username">Username:</label>*/
-/*     <input type="text" id="username" name="_username" value="<?php echo $last_username ?>" />*/
+/*     <label for="username">Email:</label>*/
+/*     <input type="text" id="email" name="_email" value="<?php echo $last_username ?>" />*/
 /* */
 /*     <label for="password">Password:</label>*/
 /*     <input type="password" id="password" name="_password" />*/

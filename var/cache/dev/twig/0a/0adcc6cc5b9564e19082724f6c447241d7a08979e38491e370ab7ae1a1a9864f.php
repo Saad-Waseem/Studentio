@@ -731,7 +731,7 @@ class __TwigTemplate_b5d50a1d5176d3dbea2979656b4f9faec84d6cf66c65686c36ee5239cf6
         ob_start();
         try {
             // line 501
-            $context["__internal_8655917549d39f6c1e13d4a18bc9bbcd11325f0dfbaa95e226f9cd896db73f9b"] = $this;
+            $context["__internal_1a04b1b8cbae6ba0fd94833d9df282575eadf65e2260af75ecd2cbffd5ba98e4"] = $this;
             // line 502
             echo "                {
                     \"id\": \"";
@@ -745,7 +745,7 @@ class __TwigTemplate_b5d50a1d5176d3dbea2979656b4f9faec84d6cf66c65686c36ee5239cf6
                     \"events\": [
 ";
             // line 506
-            echo $context["__internal_8655917549d39f6c1e13d4a18bc9bbcd11325f0dfbaa95e226f9cd896db73f9b"]->getdump_events((isset($context["events"]) ? $context["events"] : null));
+            echo $context["__internal_1a04b1b8cbae6ba0fd94833d9df282575eadf65e2260af75ecd2cbffd5ba98e4"]->getdump_events((isset($context["events"]) ? $context["events"] : null));
             echo "
                     ]
                 }
