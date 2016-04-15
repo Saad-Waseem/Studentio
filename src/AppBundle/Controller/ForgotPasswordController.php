@@ -19,29 +19,67 @@ class ForgotPasswordController extends Controller
      */
     public function forgotPasswordAction(Request $request)
     {
-        $form = $this->createForm(ForgotPasswordType::class);
-        
-
+         $user = new User();
+        $form = $this->createForm(ForgotPasswordType::class,$user);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            print_r($request);
-            exit();
+        if ($form->isSubmitted()) {
+            print_r("email: ");
+            print_r($user->getEmail());
             // 1) search user with the given email User!
-            $user = $this->getDoctrine()
-                            ->getRepository('AppBundle:User')
-                            ->find($);
-                            if (!$product) {
-                                throw $this->createNotFoundException(
-                                    'No product found for id '.$productId
-                                    );
-                                    }
-                                    // ... do any other work - like send them an email, etc
-                                    // maybe set a "flash" success message for the user
-                                    return $this->redirectToRoute('homepage');
-                                }
-                                return $this->render('registration/forgot.html.php', array(
-                                    'form' => $form->createView(),
-                                    ));
-                            }
-                        }
+            // $user = $this->getDoctrine()
+            //              ->getRepository('AppBundle:User')
+            //              ->findOneBy(array('email' => $user->getEmail()));
+            $db_manager = $this->getDoctrine()->getManager();
+            $query = $db_manager->createQuery(
+                                                'SELECT u
+                                                FROM AppBundle:User u
+                                                WHERE u'.'.email = :email'
+                                            )->setParameter('email', $user->getEmail());
+            $user = $query->getResult();
+            if (!$user) {
+                throw $this->createNotFoundException('No User found for email '.$request);
+            }
+            else{
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('saadwasem@gmail.com')
+            ->setTo($user[0]->getEmail())
+            ->setBody(
+            $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                'emails/forgot_email.html.php',
+                array('email' => $user[0]->getEmail())
+            ),
+            'text/html'
+        )
+        /*
+         * If you also want to include a plaintext version of the message
+        ->addPart(
+            $this->renderView(
+                'Emails/registration.txt.twig',
+                array('name' => $name)
+            ),
+            'text/plain'
+        )
+        */
+    ;
+    $this->get('mailer')->send($message);
+    // sendEmail($user[0]->getEmail());
+    print_r($user);
+            // ... do any other work - like send them an email, etc
+            // maybe set a "flash" success message for the user
+            //return $this->redirectToRoute('homepage');
+        }
+    }
+        return $this->render('registration/forgot.html.php', array(
+            'form' => $form->createView(),
+            ));
+    }
+//     public function sendEmail($email_address)
+//     {
+
+
+//     return $this->render("your message has been sent");
+// }
+}
 ?>

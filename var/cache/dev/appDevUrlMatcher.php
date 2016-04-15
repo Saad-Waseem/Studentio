@@ -122,9 +122,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // front
-        if ($pathinfo === '/front') {
-            return array (  '_controller' => 'AppBundle\\Controller\\HomePageController::homepageAction',  '_route' => 'front',);
+        if (0 === strpos($pathinfo, '/f')) {
+            // forgot_password
+            if ($pathinfo === '/forgot') {
+                return array (  '_controller' => 'AppBundle\\Controller\\ForgotPasswordController::forgotPasswordAction',  '_route' => 'forgot_password',);
+            }
+
+            // front
+            if ($pathinfo === '/front') {
+                return array (  '_controller' => 'AppBundle\\Controller\\HomePageController::homepageAction',  '_route' => 'front',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/l')) {

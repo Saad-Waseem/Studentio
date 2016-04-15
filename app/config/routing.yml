@@ -6,3 +6,6 @@ blog_show:
     defaults:  { _controller: AppBundle:Blog:show }
 logout:
     path: /logout
+# forgot:
+#     path: /forgot
+#     defaults:  {_controller: AppBundle:ForgotPassword:forgotPassword}
